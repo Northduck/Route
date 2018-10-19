@@ -7,3 +7,11 @@
 //
 
 #include "Route_swap.hpp"
+#include "Route.hpp"
+#include <iostream>
+void routeSwap(Route &path1, Route &path2){
+    Route swapPath;
+    swapPath=path1;
+    path1=path2;
+    path2=swapPath;
+}

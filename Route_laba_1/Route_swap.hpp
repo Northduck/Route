@@ -10,5 +10,6 @@
 #define Route_swap_hpp
 
 #include <stdio.h>
-
+#include "Route.hpp"
+void routeSwap(Route &path1, Route &path2);
 #endif /* Route_swap_hpp */
