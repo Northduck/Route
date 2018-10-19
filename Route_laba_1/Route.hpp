@@ -7,8 +7,8 @@ using namespace std;
 class Route{
 private:
     int routeId=0;
-    string initialStop;
-    string endingStop;
+    string initialStop=" ";
+    string endingStop=" ";
 public:
     Route();
     
@@ -32,6 +32,8 @@ public:
     
     void printRoute();
     
-    Route& operator = (Route &way1);
+    void setDefault();
+    
+    Route* operator = (Route &way);
 };
 #endif /* Route_hpp */

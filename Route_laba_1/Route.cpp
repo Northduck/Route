@@ -3,25 +3,25 @@
 #include <iostream>
 using namespace std;
 Route::Route(){
-    cout<<"default constructor";
+    cout<<endl<<"default constructor Route class"<<endl;
     setRoudeId();
     setinitialStop();
     setendingStop();
 }
 
 Route::Route(int ID, string initial, string ending): routeId(ID), initialStop(initial), endingStop(ending){
-    cout<<endl<<"constructor with parameter"<<endl;
+    cout<<endl<<"constructor with parameter Route class"<<endl;
 }
 
 Route::Route(const Route*){
-    cout<<endl<<"constructor copying"<<endl;
+    cout<<endl<<"constructor copying Route class"<<endl;
     this->routeId = routeId;
     this->initialStop = initialStop;
     this->endingStop = endingStop;
 }
 
 Route::~Route(){
-    cout<<endl<<"destructor"<<endl;
+    cout<<endl<<"destructor Route class"<<endl;
     routeId=0;
     initialStop="";
     endingStop="";
@@ -51,15 +51,20 @@ void Route::setendingStop(){
 }
 
 void Route::printRoute(){
-    cout<<getRouteId()<<endl;
-    cout<<getinitialStop()<<endl;
-    cout<<getendingStop()<<endl;
+    cout<<endl<<"Id of the route is: "<<getRouteId()<<endl;
+    cout<<endl<<"Initial stop of the route is: "<<getinitialStop()<<endl;
+    cout<<endl<<"Ending stop of the route is: "<<getendingStop()<<endl<<endl;
 }
 
-Route& Route::operator = (Route &way1){
-    this->routeId=way1.routeId;
-    this->initialStop=way1.initialStop;
-    this->endingStop=way1.endingStop;
-    return *this;
+void Route::setDefault(){
+    routeId=0;
+    initialStop="\0";
+    endingStop="\0";
 }
 
+Route* Route::operator = (Route &way){
+    this->routeId=way.routeId;
+    this->initialStop=way.initialStop;
+    this->endingStop=way.endingStop;
+    return this;
+}
