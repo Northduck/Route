@@ -12,5 +12,5 @@
 #include <stdio.h>
 #include <string>
 #include "Route.hpp"
-void routeSearch(Route *array, int pathSize);
+void routeSearch(Route **array, int pathSize);
 #endif /* Route_search_hpp */

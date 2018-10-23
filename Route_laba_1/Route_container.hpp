@@ -15,7 +15,7 @@
 class Container{
     private:
         int size;
-        Route *path=nullptr;
+        Route **path=nullptr;
     public:
     Container();
     
@@ -25,18 +25,18 @@ class Container{
     
     ~Container();
     
-    void printPaths(Route *way);
+    void printPaths(Route **way);
     
     void setSize();
     
     int getSize();
     
-    Route* getRoute();
+    Route** getRoute();
     
     void deleteRoute(int serNumb);
     
-    Container& operator +=(Route &way1);
+    Container& operator +=(Route *way1);
     
-    Container& operator -=(Route &way1);
+    Container& operator -=(Route *way1);
 };
 #endif /* Route_container_hpp */

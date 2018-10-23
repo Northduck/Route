@@ -19,10 +19,9 @@ Container::Container(){
 Container::Container(int capacity){
     cout<<endl<<"constructor with parameter Container class"<<endl;
     size=capacity;
-    path=(Route*)malloc(sizeof(Route)*size);
-    for(int i=0;i<size;i++){
-        new (path+i) Route(); //Вызов конструктора по умолчанию с помощью placement new
-    }
+    path=new Route*[size];
+    for (int i=0;i<size;i++)
+        path[i]=new Route;
     routeSorting(path, size);
 }
 
@@ -47,38 +46,42 @@ void Container::setSize(){
 
 int Container::getSize(){return size;}
 
-Route* Container::getRoute(){return path;}
+Route** Container::getRoute(){return path;}
 
 void Container::deleteRoute(int serNumb){
     size--;
-    Route *newPath=(Route*)malloc(size*sizeof(Route));
+    Route **newPath = new Route*[size];
     int j=0;
     for(int i=0;i<size;i++){
         if(i==serNumb){
             j++;
         }
-        newPath[i].setDefault();
         newPath[i]=path[j];
         j++;
     }
-    path=(Route*)realloc(path,size*sizeof(Route));
-    for(int i=0;i<size;i++){
-        path[i]=newPath[i];
-    }
-    free(newPath);
+    delete [] path;
+    path=newPath;
 }
 
-Container& Container::operator +=(Route &way1){
-    path=(Route*)realloc(path,(size+1)*sizeof(Route));
-    path[size].setDefault();
-    path[size]=way1;
+Container& Container::operator +=(Route *way1){
+    Route **newPath = new Route*[size+1];
+    for(int i=0;i<size;i++){
+        newPath[i]=path[i];
+    }
+    newPath[size]=way1;
+    if(size!=0){
+        delete [] path;
+    }
     size++;
-    routeSorting(path, size);
+    path=newPath;
+    if(size>1){
+        routeSorting(path, size);
+    }
     printPaths(path);
     return *this;
 }
 
-Container& Container::operator -=(Route &way1){
+Container& Container::operator -=(Route *way1){
     try{
         if(size<=0){
             throw 404;
@@ -90,10 +93,10 @@ Container& Container::operator -=(Route &way1){
     }
     bool isWay=false;
     for(int i=0;i<size;i++){
-        int id=path[i].getRouteId();
-        string firstRoute=path[i].getinitialStop();
-        string secondRoute=path[i].getendingStop();
-        if((id==way1.getRouteId())&&(firstRoute==way1.getinitialStop())&&(secondRoute==way1.getendingStop())){
+        int id=path[i][0].getRouteId();
+        string firstRoute=path[i][0].getinitialStop();
+        string secondRoute=path[i][0].getendingStop();
+        if((id==way1[0].getRouteId())&&(firstRoute==way1[0].getinitialStop())&&(secondRoute==way1[0].getendingStop())){
             try{
                 if(size==1){
                     throw 405;
@@ -101,7 +104,7 @@ Container& Container::operator -=(Route &way1){
             }
             catch(int error){
                 size--;
-                free(path);
+                delete [] path;
                 path=nullptr;
                 return *this;
             }
@@ -117,10 +120,10 @@ Container& Container::operator -=(Route &way1){
     return *this;
 }
 
-void Container::printPaths(Route *way){
+void Container::printPaths(Route **way){
     cout<<endl<<"Base of Routes:"<<endl;
     for(int i=0;i<size;i++){
-        way[i].printRoute();
+        way[i][0].printRoute();
     }
 }
 

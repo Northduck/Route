@@ -10,22 +10,22 @@
 #include "Route.hpp"
 #include <iostream>
 #include "Route_swap.hpp"
-Route& routeSorting(Route *array, int arrSize) {
+Route** routeSorting(Route **array, int arrSize) {
     int iPath=0, minPath=0;
     for (int i = 0; i < arrSize - 1; i++) {
         int min = i;
         for (int j = i + 1; j < arrSize; j++) {
-            iPath=array[j].getRouteId();
-            minPath=array[min].getRouteId();
+            iPath=array[j][0].getRouteId();
+            minPath=array[min][0].getRouteId();
             if (iPath<minPath){
                 min = j;
             }
         }
         
         if (min != i) {
-            routeSwap(array[i], array[min]);
+            routeSwap(array[i][0], array[min][0]);
             min = i;
         }
     }
-    return *array;
+    return array;
 }

@@ -21,7 +21,7 @@ int main() {
             }
             case 2:{
                 int op;
-                Route way1;
+                Route *way1=new Route;
                 cout<<"1 is for +=; 2 is for --"<<endl;
                 cin>>op;
                 switch (op){
@@ -34,6 +34,7 @@ int main() {
                         break;
                     }
                 }
+                delete way1;
                 break;
             }
             case 3:{

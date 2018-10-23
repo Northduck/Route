@@ -62,9 +62,9 @@ void Route::setDefault(){
     endingStop="\0";
 }
 
-Route* Route::operator = (Route &way){
-    this->routeId=way.routeId;
-    this->initialStop=way.initialStop;
-    this->endingStop=way.endingStop;
+Route* Route::operator = (Route*){
+    this->routeId = routeId;
+    this->initialStop = initialStop;
+    this->endingStop = endingStop;
     return this;
 }

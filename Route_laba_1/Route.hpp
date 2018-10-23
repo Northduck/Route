@@ -34,6 +34,6 @@ public:
     
     void setDefault();
     
-    Route* operator = (Route &way);
+    Route* operator = (Route*);
 };
 #endif /* Route_hpp */

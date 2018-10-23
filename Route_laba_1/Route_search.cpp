@@ -11,20 +11,20 @@
 #include <string>
 #include "Route.hpp"
 using namespace std;
-void routeSearch(Route *array, int pathSize){
+void routeSearch(Route **array, int pathSize){
     bool isPath=false;
     int path;
     cout<<endl<<"Which Route do you want to find?"<<endl;
     cin>>path;
     for(int i=0; i<pathSize; ++i){
-        if(path==array[i].getRouteId()){
-            cout<<endl<<"There is the Route with your stop"<<endl;
-            array[i].printRoute();
+        if(path==array[i][0].getRouteId()){
+            cout<<endl<<"There is the Route with your number"<<endl;
+            array[i][0].printRoute();
             isPath=true;
         }
     }
     if(!isPath){
-        cout<<endl<<"There is no entered Route"<<endl;
+        cout<<endl<<"There is no Route with your number"<<endl;
     }
 
 }
