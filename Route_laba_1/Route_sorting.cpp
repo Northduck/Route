@@ -10,6 +10,7 @@
 #include "Route.hpp"
 #include <iostream>
 #include "Route_swap.hpp"
+
 Route** routeSorting(Route **array, int arrSize) {
     int iPath=0, minPath=0;
     for (int i = 0; i < arrSize - 1; i++) {

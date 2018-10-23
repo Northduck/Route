@@ -23,6 +23,7 @@ void routeSearch(Route **array, int pathSize){
             isPath=true;
         }
     }
+    
     if(!isPath){
         cout<<endl<<"There is no Route with your number"<<endl;
     }

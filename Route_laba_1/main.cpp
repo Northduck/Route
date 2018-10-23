@@ -42,6 +42,7 @@ int main() {
                 break;
             }
         }
+        
         cout<<"1 is for searching the route; 2 is for += or --; 3 is for print routes"<<endl;
         cin>>el;
     }
