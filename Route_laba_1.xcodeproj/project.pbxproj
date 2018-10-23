@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		C31897DE2171F42B00FFB0A5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31897DD2171F42B00FFB0A5 /* main.cpp */; };
 		C37415AA2172003F0001FFFE /* Route.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37415A82172003F0001FFFE /* Route.cpp */; };
-		C3DB732321720B8B00A5655A /* Route_print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB732121720B8B00A5655A /* Route_print.cpp */; };
 		C3DB732621720BA200A5655A /* Route_swap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB732421720BA200A5655A /* Route_swap.cpp */; };
 		C3DB732921720BB700A5655A /* Route_sorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB732721720BB700A5655A /* Route_sorting.cpp */; };
+		C3DB732C2172271A00A5655A /* Route_search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB732A2172271900A5655A /* Route_search.cpp */; };
+		C3DB732F21722E7000A5655A /* Route_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DB732D21722E7000A5655A /* Route_container.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,12 +32,14 @@
 		C31897DD2171F42B00FFB0A5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C37415A82172003F0001FFFE /* Route.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route.cpp; sourceTree = "<group>"; };
 		C37415A92172003F0001FFFE /* Route.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route.hpp; sourceTree = "<group>"; };
-		C3DB732121720B8B00A5655A /* Route_print.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route_print.cpp; sourceTree = "<group>"; };
-		C3DB732221720B8B00A5655A /* Route_print.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route_print.hpp; sourceTree = "<group>"; };
 		C3DB732421720BA200A5655A /* Route_swap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route_swap.cpp; sourceTree = "<group>"; };
 		C3DB732521720BA200A5655A /* Route_swap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route_swap.hpp; sourceTree = "<group>"; };
 		C3DB732721720BB700A5655A /* Route_sorting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route_sorting.cpp; sourceTree = "<group>"; };
 		C3DB732821720BB700A5655A /* Route_sorting.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route_sorting.hpp; sourceTree = "<group>"; };
+		C3DB732A2172271900A5655A /* Route_search.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route_search.cpp; sourceTree = "<group>"; };
+		C3DB732B2172271A00A5655A /* Route_search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route_search.hpp; sourceTree = "<group>"; };
+		C3DB732D21722E7000A5655A /* Route_container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Route_container.cpp; sourceTree = "<group>"; };
+		C3DB732E21722E7000A5655A /* Route_container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Route_container.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,15 +72,17 @@
 		C31897DC2171F42B00FFB0A5 /* Route_laba_1 */ = {
 			isa = PBXGroup;
 			children = (
+				C3DB732D21722E7000A5655A /* Route_container.cpp */,
+				C3DB732E21722E7000A5655A /* Route_container.hpp */,
 				C37415A82172003F0001FFFE /* Route.cpp */,
 				C37415A92172003F0001FFFE /* Route.hpp */,
-				C3DB732421720BA200A5655A /* Route_swap.cpp */,
-				C3DB732521720BA200A5655A /* Route_swap.hpp */,
 				C3DB732721720BB700A5655A /* Route_sorting.cpp */,
 				C3DB732821720BB700A5655A /* Route_sorting.hpp */,
+				C3DB732A2172271900A5655A /* Route_search.cpp */,
+				C3DB732B2172271A00A5655A /* Route_search.hpp */,
 				C31897DD2171F42B00FFB0A5 /* main.cpp */,
-				C3DB732121720B8B00A5655A /* Route_print.cpp */,
-				C3DB732221720B8B00A5655A /* Route_print.hpp */,
+				C3DB732521720BA200A5655A /* Route_swap.hpp */,
+				C3DB732421720BA200A5655A /* Route_swap.cpp */,
 			);
 			path = Route_laba_1;
 			sourceTree = "<group>";
@@ -139,8 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3DB732921720BB700A5655A /* Route_sorting.cpp in Sources */,
+				C3DB732C2172271A00A5655A /* Route_search.cpp in Sources */,
 				C3DB732621720BA200A5655A /* Route_swap.cpp in Sources */,
-				C3DB732321720B8B00A5655A /* Route_print.cpp in Sources */,
+				C3DB732F21722E7000A5655A /* Route_container.cpp in Sources */,
 				C31897DE2171F42B00FFB0A5 /* main.cpp in Sources */,
 				C37415AA2172003F0001FFFE /* Route.cpp in Sources */,
 			);

@@ -12,5 +12,4 @@
 #include <stdio.h>
 #include "Route.hpp"
 Route** routeSorting(Route **array, int arrSize);
-
 #endif /* Route_sorting_hpp */

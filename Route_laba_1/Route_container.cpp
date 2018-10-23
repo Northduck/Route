@@ -117,7 +117,6 @@ Container& Container::operator -=(Route *way1){
         if(!isWay){
             cout<<endl<<"Sorry, there is no your Route"<<endl;
         }
-    
     return *this;
 }
 
