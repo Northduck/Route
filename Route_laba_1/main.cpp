@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Route.hpp"
 #include "Route_container.hpp"
-#include "Route_search.hpp"
 #include "Route_sorting.hpp"
 using namespace std;
 int main() {
@@ -10,13 +9,18 @@ int main() {
     cout<<"How much routes do you want to enter?"<<endl;
     cin>>routeCapacity;
     Container c(routeCapacity);
-    c.printPaths(c.getRoute());
+    c.printPaths();
     cout<<"1 is for searching the route; 2 is for += or --; 3 is for print routes"<<endl;
     cin>>el;
     while(el!=0){
         switch (el){
             case 1:{
-                routeSearch(c.getRoute(), c.getSize());
+                int wantedPath;
+                cout<<"Which Routes do you want to find?"<<endl;
+                cin>>wantedPath;
+                Container subC;
+                c.routeSearch(subC,wantedPath);
+                subC.printPaths();
                 break;
             }
             case 2:{
@@ -27,10 +31,12 @@ int main() {
                 switch (op){
                     case 1:{
                         c+=way1;
+                        c.printPaths();
                         break;
                     }
                     case 2:{
                         c-=way1;
+                        c.printPaths();
                         break;
                     }
                 }
@@ -38,7 +44,7 @@ int main() {
                 break;
             }
             case 3:{
-                c.printPaths(c.getRoute());
+                c.printPaths();
                 break;
             }
         }

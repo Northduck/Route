@@ -21,22 +21,23 @@ class Container{
     
     Container(int capacity);
     
-    Container(Container*);
+    Container(Container &C);
     
     ~Container();
     
-    void printPaths(Route **way);
-    
-    void setSize();
+    void printPaths();
     
     int getSize();
     
     Route** getRoute();
     
+    void routeSearch(Container &subC,int path);
+    
     void deleteRoute(int serNumb);
     
-    Container& operator +=(Route *way1);
+    Container& operator +=(Route *way);
     
-    Container& operator -=(Route *way1);
+    Container& operator -=(Route *way);
+    
 };
 #endif /* Route_container_hpp */

@@ -9,7 +9,6 @@
 #include "Route_container.hpp"
 #include "Route.hpp"
 #include "Route_sorting.hpp"
-#include "Route_search.hpp"
 Container::Container(){
     cout<<endl<<"default constructor Container class"<<endl;
     path=nullptr;
@@ -29,25 +28,27 @@ Container::~Container(){
     cout<<endl<<"destructor Container class"<<endl;
     if(size!=0){
         size=0;
-        free(path);
+        delete [] path;
     }
 }
 
-Container::Container(Container*){
+Container::Container(Container &C){
     cout<<endl<<"constructor copying Container class"<<endl;
-    this->size = size;
-    this->path = path;
-}
-
-void Container::setSize(){
-    cout<<endl<<"Enter size of array Container class"<<endl;
-    cin>>size;
+    this->size = C.size;
+    this->path = C.path;
 }
 
 int Container::getSize(){return size;}
 
 Route** Container::getRoute(){return path;}
 
+void Container::routeSearch(Container &subC,int wantedPath){
+for(int i=0; i<size; ++i){
+    if(wantedPath==path[i][0].getRouteId()){
+        subC+=path[i];
+    }
+}
+}
 void Container::deleteRoute(int serNumb){
     size--;
     Route **newPath = new Route*[size];
@@ -63,12 +64,12 @@ void Container::deleteRoute(int serNumb){
     path=newPath;
 }
 
-Container& Container::operator +=(Route *way1){
+Container& Container::operator +=(Route *way){
     Route **newPath = new Route*[size+1];
     for(int i=0;i<size;i++){
         newPath[i]=path[i];
     }
-    newPath[size]=way1;
+    newPath[size]=way;
     if(size!=0){
         delete [] path;
     }
@@ -77,53 +78,35 @@ Container& Container::operator +=(Route *way1){
     if(size>1){
         routeSorting(path, size);
     }
-    printPaths(path);
     return *this;
 }
 
-Container& Container::operator -=(Route *way1){
-    try{
-        if(size<=0){
-            throw 404;
-        }
-    }
-    catch(int error){
-        cout<<endl<<"Sorry, you can't delete element from empty array"<<endl;
-        return *this;
-    }
-    bool isWay=false;
+Container& Container::operator -=(Route *way){
     for(int i=0;i<size;i++){
-        int id=path[i][0].getRouteId();
-        string firstRoute=path[i][0].getinitialStop();
-        string secondRoute=path[i][0].getendingStop();
-        if((id==way1[0].getRouteId())&&(firstRoute==way1[0].getinitialStop())&&(secondRoute==way1[0].getendingStop())){
-            try{
+        if(path[i][0]==way[0]){
                 if(size==1){
-                    throw 405;
+                    size--;
+                    delete [] path;
+                    path=nullptr;
+                    return *this;
                 }
-            }
-            catch(int error){
-                size--;
-                delete [] path;
-                path=nullptr;
-                return *this;
-            }
             deleteRoute(i);
-            isWay=true;
-            printPaths(path);
             return *this;
         }
     }
-        if(!isWay){
-            cout<<endl<<"Sorry, there is no your Route"<<endl;
-        }
+    cout<<endl<<"Sorry, there is no your Route"<<endl;
     return *this;
 }
 
-void Container::printPaths(Route **way){
-    cout<<endl<<"Base of Routes:"<<endl;
-    for(int i=0;i<size;i++){
-        way[i][0].printRoute();
+void Container::printPaths(){
+    if(size!=0){
+        cout<<endl<<"Routes:"<<endl;
+        for(int i=0;i<size;i++){
+            path[i][0].printRoute();
+        }
+    }
+    else{
+        cout<<endl<<"There is no Route with your number or there is no Routes at all"<<endl;
     }
 }
 

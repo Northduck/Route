@@ -14,7 +14,7 @@ public:
     
     Route(int ID, string initial, string ending);
     
-    Route(const Route*);
+    Route(Route &way);
     
     ~Route();
     
@@ -32,8 +32,8 @@ public:
     
     void printRoute();
     
-    void setDefault();
+    Route& operator = (Route &way);
     
-    Route* operator = (Route*);
+    bool operator ==(const Route &way);
 };
 #endif /* Route_hpp */

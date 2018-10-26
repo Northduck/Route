@@ -1,0 +1,9 @@
+*.xcodeproj
+
+*.pbxproj
+
+*..xcuserstate
+
+*.xcbkptlist
+
+*.xcodeproj/

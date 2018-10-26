@@ -13,11 +13,11 @@ Route::Route(int ID, string initial, string ending): routeId(ID), initialStop(in
     cout<<endl<<"constructor with parameter Route class"<<endl;
 }
 
-Route::Route(const Route*){
+Route::Route(Route &way){
     cout<<endl<<"constructor copying Route class"<<endl;
-    this->routeId = routeId;
-    this->initialStop = initialStop;
-    this->endingStop = endingStop;
+    this->routeId = way.routeId;
+    this->initialStop = way.initialStop;
+    this->endingStop = way.endingStop;
 }
 
 Route::~Route(){
@@ -56,15 +56,12 @@ void Route::printRoute(){
     cout<<endl<<"Ending stop of the route is: "<<getendingStop()<<endl<<endl;
 }
 
-void Route::setDefault(){
-    routeId=0;
-    initialStop="\0";
-    endingStop="\0";
+Route& Route::operator = (Route &way){
+    this->routeId = way.routeId;
+    this->initialStop = way.initialStop;
+    this->endingStop = way.endingStop;
+    return *this;
 }
-
-Route* Route::operator = (Route*){
-    this->routeId = routeId;
-    this->initialStop = initialStop;
-    this->endingStop = endingStop;
-    return this;
+bool Route::operator ==(const Route &way){
+    return this->routeId==way.routeId && this->initialStop==way.initialStop && this->endingStop==way.endingStop;
 }
